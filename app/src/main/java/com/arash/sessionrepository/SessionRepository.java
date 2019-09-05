@@ -212,37 +212,12 @@ public final class SessionRepository {
         }
 
         /**
-         * By calling this method, all marked methods by Subscribe annotation, will be collected into subscriber list.
-         * <p>
-         * Usually, target class is an activity which contains lots of public methods.
-         * To increase the performance, I decided to look for annotated methods, only in the current class.
-         * <br>
-         * So you are not forced to define your listeners "public" but you must notice that <strong>listeners in parent class doesn't take in</strong>.
-         * <br>
-         * To do so, you must use the other method.
-         * </p>
+         * By calling this method, all public methods marked by Subscribe annotation, will be collected into subscriber list.
          *
          * @param listenerClass the object which contains listener methods. Usually it is "this"
          */
         public synchronized void register(Object listenerClass) {
             register(listenerClass, listenerClass.getClass());
-        }
-
-        /**
-         * By calling this method, all marked methods by Subscribe annotation, will be collected into subscriber list
-         *
-         * @param listenerClass  the object which contains listener methods. Usually it is "this"
-         * @param hierarchyLevel the number of super classes which must be considered
-         * @see com.arash.sessionrepository.SessionRepository.Session#register(Object)
-         */
-        public synchronized void register(Object listenerClass, int hierarchyLevel) {
-            Class<?> type = listenerClass.getClass();
-            for (int i = 0; i <= hierarchyLevel; i++) {
-                register(listenerClass, type);
-                type = type.getSuperclass();
-                if (type == Object.class)
-                    break;
-            }
         }
 
         private void register(Object listenerClass, Class<?> listenerType) {
@@ -252,7 +227,7 @@ public final class SessionRepository {
             //if may be a heavy job to find all subscribers and call them indeed, so let's run it in background thread
             worker.execute(() -> {
                 // catch all methods
-                final Method[] methods = listenerType.getDeclaredMethods();
+                final Method[] methods = listenerType.getMethods();
                 for (int i = methods.length - 1; i >= 0; i--) {
                     // search for Subscribe annotation
                     if (methods[i].isAnnotationPresent(Subscribe.class)) {
