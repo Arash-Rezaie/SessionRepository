@@ -52,3 +52,10 @@ public void listener1(Object obj) {  //Please notice that the obj type would be 
 session.put("aKey","some data");
 
 ```
+finally, do not forget to clear the session when ever needed, as data will be remained while application process is alive
+```java
+
+SessionRepository.removeSession(session); // you can pass the session name too
+
+```
+>you may clear a session every time you like, usually you need it in an activity or dialog, so it is prefered to do that when activity or dialog is going to be dismissed.
