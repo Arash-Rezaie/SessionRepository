@@ -5,6 +5,7 @@ This module is basically a key-value data repository and it is normaly due to ho
 
 ## How to use this library
 1.Download module, Unzip it and add it to your project as gradle module
+
 2.Catch a session
 ```java
 Session session = SessionRepository.getSession("mySession");
@@ -24,6 +25,7 @@ Object obj = session.get("key1","default value if the given key doesn't exist");
 
 ```
 Also, you may want to use it to notify listener.
+
 1.After obtaining a session, register listener class:
 ```java
 session.register(yourClass); //usually 'this'
