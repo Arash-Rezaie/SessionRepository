@@ -6,7 +6,7 @@ This module is basically a key-value data repository and it is normaly due to ho
 ## How to use this library
 1.Download module, unzip it and add it to your project as gradle module
 
-2.Catch a session
+2.Obtain a session
 ```java
 Session session = SessionRepository.getSession("mySession");
 
