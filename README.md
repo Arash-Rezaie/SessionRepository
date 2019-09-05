@@ -39,7 +39,9 @@ public void listener1(Object obj) {  //Please notice that the obj type would be 
 
 ```
 > mainThread and deleteKey are true by default.
+
 > mainThread determines whether to run listener method in UI thread.
+
 > the given key would be deleted just after first invoke, if you are willing to keep mentioned key-value in the session, pass false for deleteKey.
 
 3.To invoke listeners, put data in session like before:
