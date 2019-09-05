@@ -1,10 +1,10 @@
 # SessionRepository
 A simple data repository to share data among different classes in a project.
 
-This module is basically a key-value data repository and it is normaly due to hold data. I just modified it to support observable pattern too. So, like [Event Bus](http://www.github.com/greenrobot/eventbus) you can publish data for listeners too, but listeners get notified by given key instead of data type.
+This module is basically a key-value data repository and it is normaly due to hold data. I just modified it to support observable pattern too. So, like [Event Bus](http://www.github.com/greenrobot/eventbus) you can publish data for listeners too, but listeners get notified by the given key instead of data type.
 
 ## How to use this library
-1.Download module, Unzip it and add it to your project as gradle module
+1.Download module, unzip it and add it to your project as gradle module
 
 2.Catch a session
 ```java
@@ -24,7 +24,7 @@ session.put("key1","some data"); //data can be any type
 Object obj = session.get("key1","default value if the given key doesn't exist");
 
 ```
-Also, you may want to use it to notify listener.
+Also, you may want to use it to notify a listener.
 
 1.After obtaining a session, register listener class:
 ```java
