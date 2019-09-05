@@ -17,7 +17,7 @@ or use default session
 Session session = SessionRepository.getDefaultSession();
 
 ```
-3.Now you can put/get a key-value into/from the session
+3.Now you can put/get a key-value pair into/from the session
 ```java
 
 session.put("key1","some data"); //data can be any type
