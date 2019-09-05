@@ -6,7 +6,7 @@ This module is basically a key-value data repository and it is normaly due to ho
 ## How to use this library
 1.Download module, unzip it and add it to your project as gradle module
 
-2.Obtain a session
+2.Obtain a session. If a session with the given name doesn't exist, new session will be created, o.w the old one will be returned
 ```java
 Session session = SessionRepository.getSession("mySession");
 
@@ -52,10 +52,13 @@ public void listener1(Object obj) {  //Please notice that the obj type would be 
 session.put("aKey","some data");
 
 ```
-finally, do not forget to clear the session when ever needed, as data will be remained while application process is alive
+All key-value pairs and sessions will be remained alive during application life unless you clear a key or a session
 ```java
+session.remove("aKey"); // to remove a key from a session
 
-SessionRepository.removeSession(session); // you can pass the session name too
+session.empty(); // to clear all data in a session
+
+SessionRepository.removeSession(session object or its name); // remove a session with all its data (no need to empty the sesssin).
 
 ```
->you may clear a session every time you like, usually you need it in an activity or dialog, so it is prefered to do that when activity or dialog is going to be dismissed.
+>you may clear a session every time you like. Usually, you need it in an activity or dialog, so it is prefered to do that when activity or dialog is going to be dismissed.
