@@ -1,3 +1,5 @@
+# New versions are available in BaseModule project.
+
 # SessionRepository
 A simple data repository to share data among different classes in a project.
 
